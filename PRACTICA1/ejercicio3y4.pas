@@ -256,7 +256,34 @@ begin
     writeln('El archivo ', nombreFisico + '.txt', ' fue descargado exitosamente.');
 end;
 
+procedure faltaDni(var e: archivo);
+var
+    emp: empleado;
+    contador: integer;
+    t: text;
+begin
+    writeln('Buscando empleados SIN dni cargado...');
+    assign(t, 'faltaDNI.txt');
+    rewrite(t);
+    reset(e);
+    contador:= 0;
+    while not eof(e) do begin
+        read(e, emp);
+        if(emp.dni = 0) then begin
+            with emp do
+                writeln(t, apellido,' ', nombre, ' ', edad, ' ', nro, ' ');
+            contador := contador + 1;
+        end;
+    end;
+    close(e);
+    close(t);
 
+    if (contador = 0) then
+        writeln('No se encontraron empleados sin dni cargado.')
+    else
+        writeln('El archivo se ha generado correctamente.');
+
+end;
 
 
 var
@@ -274,6 +301,8 @@ Begin
         writeln('4. Buscar empleados proximos a jubilarse.');
         writeln('5. Agregar empleado/s.');
         writeln('6. Modificar edad de empleado.');
+        writeln('7. Exportar a texto.');
+        writeln('8. Exportar a texto los empleados sin DNI.');
         writeln('0. Salir.');
     
         readln(opcion);
@@ -299,6 +328,14 @@ Begin
             6: begin
                 usarArchivo(e);
                 modificarEdad(e);
+            end;
+            7: begin
+                usarArchivo(e);
+                exportarATexto(e);
+            end;
+            8: begin
+                usarArchivo(e);
+                faltaDNI(e);
             end;
             0: writeln('Saliendo del programa...');
             else

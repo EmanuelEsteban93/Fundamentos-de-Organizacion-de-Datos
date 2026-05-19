@@ -1,0 +1,12 @@
+101  2.5000000000000000E+005  Samsung
+15 5  Galaxy A15 128GB
+Galaxy A15
+102  3.2000000000000000E+005  Motorola
+0 6  Moto G84 256GB color azul
+Moto G84
+104  9.5000000000000000E+005  Apple
+2 4  iPhone 15 256GB negro
+iPhone 15
+12546  2.5000000000000000E+004 
+5 5  celular
+motorola mini 5
